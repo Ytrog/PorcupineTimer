@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PorcupineTimer.Audio;
 
 namespace PorcupineTimer
 {
@@ -29,7 +30,7 @@ namespace PorcupineTimer
         private void SetHours()
         {
             var hours = tbTime.Value > 0 ? tbTime.Value : 0.5;
-            lblHours.Text = $"Hours: {hours}"; 
+            lblHours.Text = $"Hours: {hours}";
         }
 
         private void btnStart_Click(object sender, EventArgs e)
