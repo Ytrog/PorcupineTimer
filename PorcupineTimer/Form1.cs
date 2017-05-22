@@ -12,6 +12,9 @@ using PorcupineTimer.Audio;
 
 namespace PorcupineTimer
 {
+    /// <summary>
+    /// Main Form and also composition root
+    /// </summary>
     public partial class Form1 : Form
     {
 

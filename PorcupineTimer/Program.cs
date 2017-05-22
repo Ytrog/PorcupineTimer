@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SimpleInjector;
 
 namespace PorcupineTimer
 {
     static class Program
     {
+        private static Container container;
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -16,7 +19,17 @@ namespace PorcupineTimer
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            ConfigureDependencies();
+            Application.Run(container.GetInstance<Form1>());
+        }
+
+        private static void ConfigureDependencies()
+        {
+            container = new Container();
+            container.Register<Form1>(Lifestyle.Singleton);
+
+            container.Verify();
+
         }
     }
 }
