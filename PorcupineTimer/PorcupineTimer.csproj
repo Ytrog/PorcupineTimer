@@ -55,6 +55,7 @@
     <Compile Include="Audio\EDataFlow.cs" />
     <Compile Include="Audio\ERole.cs" />
     <Compile Include="Audio\IAudioEndpointVolume.cs" />
+    <Compile Include="Audio\IAudioManager.cs" />
     <Compile Include="Audio\IAudioSessionControl2.cs" />
     <Compile Include="Audio\IAudioSessionEnumerator.cs" />
     <Compile Include="Audio\IAudioSessionManager2.cs" />

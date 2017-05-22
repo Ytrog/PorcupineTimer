@@ -10,7 +10,7 @@ namespace PorcupineTimer.Audio
     /// from: http://stackoverflow.com/questions/14306048/controling-volume-mixer
     /// and: http://netcoreaudio.codeplex.com/
     /// </summary>
-    public static class AudioManager
+    public class AudioManager : IAudioManager
     {
         #region Master Volume Manipulation
 
@@ -18,7 +18,7 @@ namespace PorcupineTimer.Audio
         /// Gets the current master volume in scalar values (percentage)
         /// </summary>
         /// <returns>-1 in case of an error, if successful the value will be between 0 and 100</returns>
-        public static float GetMasterVolume()
+        public float GetMasterVolume()
         {
             IAudioEndpointVolume masterVol = null;
             try
@@ -43,7 +43,7 @@ namespace PorcupineTimer.Audio
         /// While the volume can be muted the <see cref="GetMasterVolume"/> will still return the pre-muted volume value.
         /// </summary>
         /// <returns>false if not muted, true if volume is muted</returns>
-        public static bool GetMasterVolumeMute()
+        public bool GetMasterVolumeMute()
         {
             IAudioEndpointVolume masterVol = null;
             try
@@ -67,7 +67,7 @@ namespace PorcupineTimer.Audio
         /// Sets the master volume to a specific level
         /// </summary>
         /// <param name="newLevel">Value between 0 and 100 indicating the desired scalar value of the volume</param>
-        public static void SetMasterVolume(float newLevel)
+        public void SetMasterVolume(float newLevel)
         {
             IAudioEndpointVolume masterVol = null;
             try
@@ -91,7 +91,7 @@ namespace PorcupineTimer.Audio
         /// <param name="stepAmount">Value between -100 and 100 indicating the desired step amount. Use negative numbers to decrease
         /// the volume and positive numbers to increase it.</param>
         /// <returns>the new volume level assigned</returns>
-        public static float StepMasterVolume(float stepAmount)
+        public float StepMasterVolume(float stepAmount)
         {
             IAudioEndpointVolume masterVol = null;
             try
@@ -127,7 +127,7 @@ namespace PorcupineTimer.Audio
         /// Mute or unmute the master volume
         /// </summary>
         /// <param name="isMuted">true to mute the master volume, false to unmute</param>
-        public static void SetMasterVolumeMute(bool isMuted)
+        public void SetMasterVolumeMute(bool isMuted)
         {
             IAudioEndpointVolume masterVol = null;
             try
@@ -149,7 +149,7 @@ namespace PorcupineTimer.Audio
         /// Switches between the master volume mute states depending on the current state
         /// </summary>
         /// <returns>the current mute state, true if the volume was muted, false if unmuted</returns>
-        public static bool ToggleMasterVolumeMute()
+        public bool ToggleMasterVolumeMute()
         {
             IAudioEndpointVolume masterVol = null;
             try
@@ -171,7 +171,7 @@ namespace PorcupineTimer.Audio
             }
         }
 
-        private static IAudioEndpointVolume GetMasterVolumeObject()
+        private IAudioEndpointVolume GetMasterVolumeObject()
         {
             IMMDeviceEnumerator deviceEnumerator = null;
             IMMDevice speakers = null;
@@ -198,7 +198,7 @@ namespace PorcupineTimer.Audio
 
         #region Individual Application Volume Manipulation
 
-        public static float? GetApplicationVolume(int pid)
+        public float? GetApplicationVolume(int pid)
         {
             ISimpleAudioVolume volume = GetVolumeObject(pid);
             if (volume == null)
@@ -210,7 +210,7 @@ namespace PorcupineTimer.Audio
             return level * 100;
         }
 
-        public static bool? GetApplicationMute(int pid)
+        public bool? GetApplicationMute(int pid)
         {
             ISimpleAudioVolume volume = GetVolumeObject(pid);
             if (volume == null)
@@ -222,7 +222,7 @@ namespace PorcupineTimer.Audio
             return mute;
         }
 
-        public static void SetApplicationVolume(int pid, float level)
+        public void SetApplicationVolume(int pid, float level)
         {
             ISimpleAudioVolume volume = GetVolumeObject(pid);
             if (volume == null)
@@ -233,7 +233,7 @@ namespace PorcupineTimer.Audio
             Marshal.ReleaseComObject(volume);
         }
 
-        public static void SetApplicationMute(int pid, bool mute)
+        public void SetApplicationMute(int pid, bool mute)
         {
             ISimpleAudioVolume volume = GetVolumeObject(pid);
             if (volume == null)
@@ -244,7 +244,7 @@ namespace PorcupineTimer.Audio
             Marshal.ReleaseComObject(volume);
         }
 
-        private static ISimpleAudioVolume GetVolumeObject(int pid)
+        private ISimpleAudioVolume GetVolumeObject(int pid)
         {
             IMMDeviceEnumerator deviceEnumerator = null;
             IAudioSessionEnumerator sessionEnumerator = null;
