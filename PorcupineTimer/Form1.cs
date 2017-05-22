@@ -22,9 +22,15 @@ namespace PorcupineTimer
         private const int ticksPerHour = 6;
         private int _iterations;
         private readonly string _defaultButtonText;
+        private readonly IAudioManager _audioManager;
 
-        public Form1()
+        public Form1(IAudioManager audioManager)
         {
+            if (audioManager == null)
+            {
+                throw new ArgumentNullException(nameof(audioManager));
+            }
+            _audioManager = audioManager;
             InitializeComponent();
             _defaultButtonText = btnStart.Text;
             SetHours();
@@ -99,7 +105,7 @@ namespace PorcupineTimer
 
         private void MuteSound()
         {
-            AudioManager.SetMasterVolumeMute(true);
+            _audioManager.SetMasterVolumeMute(true);
         }
 
         private void tbTime_ValueChanged(object sender, EventArgs e)

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SimpleInjector;
+using PorcupineTimer.Audio;
 
 namespace PorcupineTimer
 {
@@ -26,6 +27,7 @@ namespace PorcupineTimer
         private static void ConfigureDependencies()
         {
             container = new Container();
+            container.Register<IAudioManager, AudioManager>(Lifestyle.Singleton);
             container.Register<Form1>(Lifestyle.Singleton);
 
             container.Verify();
