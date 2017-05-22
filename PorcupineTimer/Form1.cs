@@ -8,9 +8,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PorcupineTimer.Audio;
 
 namespace PorcupineTimer
 {
+    /// <summary>
+    /// Main Form and also composition root
+    /// </summary>
     public partial class Form1 : Form
     {
 
@@ -18,9 +22,15 @@ namespace PorcupineTimer
         private const int ticksPerHour = 6;
         private int _iterations;
         private readonly string _defaultButtonText;
+        private readonly IAudioManager _audioManager;
 
-        public Form1()
+        public Form1(IAudioManager audioManager)
         {
+            if (audioManager == null)
+            {
+                throw new ArgumentNullException(nameof(audioManager));
+            }
+            _audioManager = audioManager;
             InitializeComponent();
             _defaultButtonText = btnStart.Text;
             SetHours();
@@ -29,7 +39,7 @@ namespace PorcupineTimer
         private void SetHours()
         {
             var hours = tbTime.Value > 0 ? tbTime.Value : 0.5;
-            lblHours.Text = $"Hours: {hours}"; 
+            lblHours.Text = $"Hours: {hours}";
         }
 
         private void btnStart_Click(object sender, EventArgs e)
@@ -95,7 +105,7 @@ namespace PorcupineTimer
 
         private void MuteSound()
         {
-            AudioManager.SetMasterVolumeMute(true);
+            _audioManager.SetMasterVolumeMute(true);
         }
 
         private void tbTime_ValueChanged(object sender, EventArgs e)
