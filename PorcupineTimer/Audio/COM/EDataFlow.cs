@@ -3,17 +3,17 @@ using System.Runtime.InteropServices;
 // ReSharper disable SuspiciousTypeConversion.Global
 // ReSharper disable InconsistentNaming
 
-namespace PorcupineTimer.Audio
+namespace PorcupineTimer.Audio.COM
 {
 
 #region Abstracted COM interfaces from Windows CoreAudio API
 
-    internal enum ERole
+    internal enum EDataFlow
     {
-        eConsole,
-        eMultimedia,
-        eCommunications,
-        ERole_enum_count
+        eRender,
+        eCapture,
+        eAll,
+        EDataFlow_enum_count
     }
 
     #endregion

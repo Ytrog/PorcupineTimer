@@ -63,17 +63,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Audio\AudioManager.cs" />
-    <Compile Include="Audio\EDataFlow.cs" />
-    <Compile Include="Audio\ERole.cs" />
-    <Compile Include="Audio\IAudioEndpointVolume.cs" />
+    <Compile Include="Audio\COM\EDataFlow.cs" />
+    <Compile Include="Audio\COM\ERole.cs" />
+    <Compile Include="Audio\COM\IAudioEndpointVolume.cs" />
     <Compile Include="Audio\IAudioManager.cs" />
-    <Compile Include="Audio\IAudioSessionControl2.cs" />
-    <Compile Include="Audio\IAudioSessionEnumerator.cs" />
-    <Compile Include="Audio\IAudioSessionManager2.cs" />
-    <Compile Include="Audio\IMMDevice.cs" />
-    <Compile Include="Audio\IMMDeviceEnumerator.cs" />
-    <Compile Include="Audio\ISimpleAudioVolume.cs" />
-    <Compile Include="Audio\MMDeviceEnumerator.cs" />
+    <Compile Include="Audio\COM\IAudioSessionControl2.cs" />
+    <Compile Include="Audio\COM\IAudioSessionEnumerator.cs" />
+    <Compile Include="Audio\COM\IAudioSessionManager2.cs" />
+    <Compile Include="Audio\COM\IMMDevice.cs" />
+    <Compile Include="Audio\COM\IMMDeviceEnumerator.cs" />
+    <Compile Include="Audio\COM\ISimpleAudioVolume.cs" />
+    <Compile Include="Audio\COM\MMDeviceEnumerator.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

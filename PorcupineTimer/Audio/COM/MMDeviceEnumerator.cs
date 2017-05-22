@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 // ReSharper disable SuspiciousTypeConversion.Global
 // ReSharper disable InconsistentNaming
 
-namespace PorcupineTimer.Audio
+namespace PorcupineTimer.Audio.COM
 {
 
     #region Abstracted COM interfaces from Windows CoreAudio API
